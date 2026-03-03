@@ -1,0 +1,28 @@
+<h4>Transferencia</h4>
+
+<form [formGroup]="transferForm" (ngSubmit)="submitTransfer()">
+ <input type="number"
+         formControlName="fromAccountId"
+         placeholder="Cuenta origen"
+         min="1"
+         required
+         class="form-control mb-2">
+
+  <input type="number"
+         formControlName="toAccountId"
+         placeholder="Cuenta destino"
+         min="1"
+         required
+         class="form-control mb-2">
+
+  <input type="number"
+         formControlName="amount"
+         placeholder="Monto"
+         min="0.01"
+         step="0.01"
+         required
+         class="form-control mb-2">
+
+  <button class="btn btn-primary" [disabled]="transferForm.invalid">
+    Transferir
+  </button>

@@ -1,0 +1,70 @@
+<h2>Lista de Cuentas</h2>
+<div class="card p-3 mb-4">
+  <h4>{{ selectedId ? 'Editar Cuenta' : 'Nueva Cuenta' }}</h4>
+
+  <form [formGroup]="accountForm" (ngSubmit)="saveAccount()">
+
+    <div class="mb-2">
+      <label>Nombre</label>
+      <input class="form-control" formControlName="accountName">
+    </div>
+
+    <div class="mb-2">
+      <label>Número</label>
+      <input class="form-control" formControlName="accountNumber">
+    </div>
+
+    <div class="mb-2">
+      <label>Balance</label>
+      <input type="number" class="form-control" formControlName="balance">
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      {{ selectedId ? 'Actualizar' : 'Crear' }}
+    </button>
+
+    <button type="button"
+            class="btn btn-secondary ms-2"
+            (click)="resetForm()">
+      Cancelar
+    </button>
+
+  </form>
+</div>
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Número</th>
+      <th>Balance</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts; trackBy: trackById">
+      <td>{{ account.id }}</td>
+      <td>{{ account.accountName }}</td>
+      <td>{{ account.accountNumber }}</td>
+      <td>{{ account.balance }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm"
+            (click)="deleteAccount(account.id)">
+            Eliminar
+        </button>
+        <button class="btn btn-primary btn-sm me-2"
+            (click)="editAccount(account)">
+            Editar
+        </button>
+        <button class="btn btn-success btn-sm me-2"
+            (click)="depositToAccount(account)">
+            Depositar
+        </button>
+        <button class="btn btn-warning btn-sm"
+            (click)="withdrawFromAccount(account)">
+            Retirar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
