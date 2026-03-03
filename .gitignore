@@ -1,3 +1,4 @@
 ./BackEnd/EjemploApi/bin
 ./BackEnd/EjemploApi/obj
 ./FrontEnd/Ejemplo-App/node_modules
+.gitignore
