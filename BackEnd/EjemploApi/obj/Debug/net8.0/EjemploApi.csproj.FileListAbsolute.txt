@@ -208,3 +208,4 @@ D:\Cosas_Interesantes\Personal\EjemploEmpresa\BackEnd\EjemploApi\obj\Debug\net8.
 D:\Cosas_Interesantes\Personal\EjemploEmpresa\BackEnd\EjemploApi\obj\Debug\net8.0\EjemploApi.pdb
 D:\Cosas_Interesantes\Personal\EjemploEmpresa\BackEnd\EjemploApi\obj\Debug\net8.0\EjemploApi.genruntimeconfig.cache
 D:\Cosas_Interesantes\Personal\EjemploEmpresa\BackEnd\EjemploApi\obj\Debug\net8.0\ref\EjemploApi.dll
+D:\Cosas_Interesantes\Personal\EjemploEmpresa\BackEnd\EjemploApi\obj\Debug\net8.0\EjemploApi.sourcelink.json

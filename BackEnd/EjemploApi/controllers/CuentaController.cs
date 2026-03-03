@@ -23,12 +23,57 @@ public class CuentaController : ControllerBase
         return Ok(cuentas);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var cuenta = await _context.Cuentas.FindAsync(id);
+
+        if (cuenta == null)
+            return NotFound("Cuenta no encontrada");
+
+        return Ok(cuenta);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAccount(Cuenta cuenta)
     {
         _context.Cuentas.Add(cuenta);
         await _context.SaveChangesAsync();
         return Ok(cuenta);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, Cuenta CuentaActualizada)
+    {
+        if (id != CuentaActualizada.Id)
+            return BadRequest("La Cuenta no coincide");
+
+        var cuenta = await _context.Cuentas.FindAsync(id);
+
+        if (cuenta == null)
+            return NotFound("Cuenta no encontrada");
+
+        cuenta.AccountName = CuentaActualizada.AccountName;
+        cuenta.AccountNumber = CuentaActualizada.AccountNumber;
+        cuenta.Balance = CuentaActualizada.Balance;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var cuenta = await _context.Cuentas.FindAsync(id);
+
+        if (cuenta == null)
+            return NotFound("Cuenta no encontrada");
+
+        _context.Cuentas.Remove(cuenta);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
     }
 
     [HttpPatch("{id}/ingreso")]
